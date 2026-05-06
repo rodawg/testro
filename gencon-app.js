@@ -80,6 +80,7 @@ ws.push({sev:'warn',icon:'🚶',text:d+': '+gapMin+'min between '+pv+' ("'+trunc
 '<span class="wllb" title="Send to bottom of '+d+'"'+dnDis+' onclick="event.stopPropagation();sendWlToBottom(\''+s.id+'\')">⤓</span>'+
 '<span class="pri-circle pri-'+priLevel+'" title="'+priTtl+'" onclick="event.stopPropagation();cyclePri(\''+s.id+'\')"></span>'+
 '<span class="wllb" title="Jump to this event in the Events tab" onclick="event.stopPropagation();jumpToEvent(\''+s.id+'\')">↗</span>'+
+'<span class="wllb wllb-rm" title="Remove from wishlist" onclick="event.stopPropagation();RM(\''+s.id+'\')">✕</span>'+
 '<span class="wllgrip" title="Drag to reorder">⠿</span>'+
 '</div>'+
 '<textarea class="wll-note'+(hasNote?' open':'')+'" placeholder="Notes (saved automatically)..." onclick="event.stopPropagation()" onblur="saveNote(\''+s.id+'\',this)">'+esc(s.n||'')+'</textarea>'+
@@ -99,8 +100,8 @@ var tgt=S[targetId];if(!tgt)return;var targetGid=tgt.group||null;var ordered=_wp
 '<span class="wpr-grip" title="Drag to reorder">⠿</span>'+
 '<span class="pri-circle pri-'+priLevel+'" title="'+priTtl+'" onclick="event.stopPropagation();cyclePri(\''+esc(s.id)+'\')"></span>'+
 '<span class="wpr-t">'+esc(s.t)+'</span>'+
+'<span class="wpr-tags">'+ach+ff+os+'</span>'+
 '<span class="wpr-meta">'+esc(s.d)+' '+esc(s.tm)+' · '+esc(s.s)+' · '+esc(s.du)+'h'+'</span>'+
-ach+ff+os+
 '<span class="'+cdotCls+'" title="'+cdotTtl+'" onclick="event.stopPropagation();cycleColor(\''+esc(s.id)+'\')"></span>'+
 '<span class="wpr-got" title="Toggle Got it!" onclick="event.stopPropagation();TGA(\''+esc(s.id)+'\')">'+(s.a?'✓':'')+'</span>'+
 '<span class="wpr-jump" title="Jump to this event in the Events tab" onclick="event.stopPropagation();jumpToEvent(\''+esc(s.id)+'\')">↗</span>'+
