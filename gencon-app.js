@@ -31,9 +31,8 @@ grid+foot+skipHtml;document.getElementById('mdl').classList.add('open');}functio
 '</div>';});}var box=document.getElementById('mdb');if(!box)return;box.classList.add('mdb-wide');box.innerHTML='<div class="mdl-h"><h3>Flat review — '+flat.length+' total</h3>'+
 '<div style="display:flex;gap:6px"><button class="mdl-actbtn" onclick="copyFlatReview()" title="Copy a plain-text numbered list to your clipboard for pasting">📋 Copy as text</button>'+
 '<button class="mdl-actbtn mdl-actbtn-cls" onclick="closeModal()" title="Close">×</button></div></div>'+
-'<div class="frv">'+rows+'</div>';document.getElementById('mdl').classList.add('open');}function openWishlistWalk(){var flat=flatPriority();var top=flat.slice(0,GENCON_MAX);var rows='';if(top.length===0){rows='<div class="frv-empty">Nothing wishlisted yet.</div>';} else {top.forEach(function(item){var s=item.event,pri=normPri(s),url=gcUrl(s.id);var ach=s.a?' wlw-row-ach':'';rows+='<div class="frv-row wlw-row'+ach+'">'+
+'<div class="frv">'+rows+'</div>';document.getElementById('mdl').classList.add('open');}function openWishlistWalk(){var flat=flatPriority();var top=flat.slice(0,GENCON_MAX);var rows='';if(top.length===0){rows='<div class="frv-empty">Nothing wishlisted yet.</div>';} else {top.forEach(function(item){var s=item.event,url=gcUrl(s.id);var ach=s.a?' wlw-row-ach':'';rows+='<div class="frv-row wlw-row'+ach+'">'+
 '<span class="frv-rank">'+item.rank+'.</span>'+
-'<span class="frv-tier tier-'+pri+'">'+pri+'</span>'+
 '<span class="frv-t"><a href="'+esc(url)+'" target="_blank" rel="noopener" class="wlw-link" title="Open this event on gencon.com (new tab)">'+esc(s.t)+' ↗</a></span>'+
 '<span class="frv-meta">'+esc(s.d)+' '+esc(s.tm)+' · '+esc(s.du)+'h · '+esc(s.s)+'</span>'+
 '<span class="wlw-got" title="Toggle Got it!" onclick="TGA(\''+esc(s.id)+'\');openWishlistWalk();">'+(s.a?'✓ got':'mark got')+'</span>'+
