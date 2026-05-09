@@ -520,7 +520,13 @@ notes+
 (tierLabel?'<span class="sch-tbadge">'+tierLabel+'</span>':'')+
 '<div style="font-weight:600;font-size:13px;line-height:1.3">'+esc(s.t||'')+'</div>'+
 '<div style="font-size:11px;color:var(--tx2);margin-top:2px">'+esc(s.s||'')+' · '+(s.du||0)+'h'+room+'</div>'+
-'</div>';}function renderMobileSchedule(){if(!isMobile())return;var pane=document.getElementById('m-sch-pane');if(!pane)return;var chips='<div class="m-day-chips">'+GENCON_DAYS.map(function(d){var n=_genConDayN[d]||'';var dn=String(n).split(' ')[1]||d;var count=_mDayCount(d);var on=d===mActiveDay?' on':'';return '<div class="m-day-chip'+on+'" onclick="setMActiveDay(\''+d+'\')">'+
+'</div>';}function _mScheduleBanner(){var ents=Object.values(S).filter(function(s){return !isLost(s);});var total=ents.length;var got=ents.filter(function(s){return s.a===1;}).length;var diff=GENCON_REG_OPEN_MS-Date.now();if(diff>0){var days=Math.floor(diff/(24*3600*1000));var hrs=Math.floor((diff%(24*3600*1000))/(3600*1000));var when=days>0?days+'d '+hrs+'h':hrs+'h';return '<div class="m-sch-banner m-sch-banner-pre" onclick="openHelp(\'workflow\')">'+
+'<span class="m-sch-banner-i">📋</span>'+
+'<span class="m-sch-banner-t"><b>Plan view</b> · submission opens in '+when+'</span>'+
+'</div>';}else{return '<div class="m-sch-banner m-sch-banner-post" onclick="openHelp(\'workflow\')">'+
+'<span class="m-sch-banner-i">✓</span>'+
+'<span class="m-sch-banner-t"><b>'+got+' of '+total+' confirmed</b> · tap ✓ Got it on events you got</span>'+
+'</div>';}}function renderMobileSchedule(){if(!isMobile())return;var pane=document.getElementById('m-sch-pane');if(!pane)return;var banner=_mScheduleBanner();var chips='<div class="m-day-chips">'+GENCON_DAYS.map(function(d){var n=_genConDayN[d]||'';var dn=String(n).split(' ')[1]||d;var count=_mDayCount(d);var on=d===mActiveDay?' on':'';return '<div class="m-day-chip'+on+'" onclick="setMActiveDay(\''+d+'\')">'+
 '<div class="m-day-chip-d">'+d.toUpperCase()+'</div>'+
 '<div class="m-day-chip-n">'+esc(dn)+'</div>'+
 '<div class="m-day-chip-c">'+count+' sched</div>'+
@@ -539,7 +545,7 @@ notes+
 '<span title="Calendar export" onclick="dlICS(0)">📅</span>'+
 '<span title="Share" onclick="openShareModal()">🔗</span>'+
 '</span>'+
-'</div>';pane.innerHTML=chips+nowHtml+actions+'<div style="padding-bottom:30px">'+rows+'</div>';}var _origRS_mobile=RS;RS=function(){_origRS_mobile.apply(this,arguments);if(isMobile())renderMobileSchedule();};function _mAccSection(id,label,bodyHtml,defaultOpen){var openCls=defaultOpen?' on':'';var openState=lsGet('m-acc-'+id);if(openState===true)openCls=' on';if(openState===false)openCls='';return '<div class="m-acc'+openCls+'" id="m-acc-'+id+'">'+
+'</div>';pane.innerHTML=banner+chips+nowHtml+actions+'<div style="padding-bottom:30px">'+rows+'</div>';}var _origRS_mobile=RS;RS=function(){_origRS_mobile.apply(this,arguments);if(isMobile())renderMobileSchedule();};function _mAccSection(id,label,bodyHtml,defaultOpen){var openCls=defaultOpen?' on':'';var openState=lsGet('m-acc-'+id);if(openState===true)openCls=' on';if(openState===false)openCls='';return '<div class="m-acc'+openCls+'" id="m-acc-'+id+'">'+
 '<div class="m-acc-h" onclick="_mAccToggle(\''+id+'\')">'+
 '<span>'+esc(label)+'</span>'+
 '<span class="m-acc-h-r"><span class="m-acc-h-chev">▾</span></span>'+
